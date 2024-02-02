@@ -80,9 +80,4 @@ resource "aws_instance" "Dharini_ec2_instance" {
 resource "aws_route_table_association" "Dharini_subnet_association" {
   subnet_id      = aws_subnet.Dharini_public_subnet.id
   route_table_id = aws_route_table.Dharini_public_route.id
-depends_on = [
-    aws_vpc.Dharini_vpc,
-    aws_subnet.Dharini_public_subnet,
-    aws_security_group.my_security_group,
-  ]
 }
