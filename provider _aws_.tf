@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 }
 
 resource "aws_vpc" "Dharini_vpc" {
@@ -18,6 +18,7 @@ resource "aws_internet_gateway" "Dharini_igw" {
   tags = {
     Name = "DhariniIGW"
   }
+  
 }
 
 resource "aws_route_table" "Dharini_public_route" {
@@ -36,7 +37,7 @@ resource "aws_route_table" "Dharini_public_route" {
 resource "aws_subnet" "Dharini_public_subnet" {
   vpc_id                  = aws_vpc.Dharini_vpc.id
   cidr_block              = "10.0.2.0/24"
-  availability_zone       = "us-east-2a"
+  availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
 
   tags = {
@@ -65,7 +66,7 @@ resource "aws_security_group" "my_security_group" {
 }
 
 resource "aws_instance" "Dharini_ec2_instance" {
-  ami                          = "ami-0277155c3f0ab2930"
+  ami                          = "ami-0cf10cdf9fcd62d37"
   instance_type                = "t2.micro"
   key_name                     = "Task3"
   vpc_security_group_ids       = [aws_security_group.my_security_group.id]
