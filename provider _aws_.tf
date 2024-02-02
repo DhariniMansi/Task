@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"
 }
 
 resource "aws_vpc" "Dharini_vpc" {
@@ -36,7 +36,7 @@ resource "aws_route_table" "Dharini_public_route" {
 resource "aws_subnet" "Dharini_public_subnet" {
   vpc_id                  = aws_vpc.Dharini_vpc.id
   cidr_block              = "10.0.2.0/24"
-  availability_zone       = "us-east-1"
+  availability_zone       = "us-east-2a"
   map_public_ip_on_launch = true
 
   tags = {
